@@ -8,7 +8,17 @@ class Game {
         this.snake.grow();
     }
 
+    changenSnakeDirection(newDirection) {
+        this.snake.changeDirection(newDirection);
+    }
+
+    moveSnake() {
+        this.snake.move();
+    }
+
     render() {
+        background(255);
+        
         this.grid.render();
         this.snake.render();
     }

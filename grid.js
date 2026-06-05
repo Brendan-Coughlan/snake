@@ -9,10 +9,10 @@ class Grid {
 
     generateNewGrid(width, height, size) {
         let cells = [];
-        for (let i = 0; i < height; i++) {
+        for (let i = 0; i < width; i++) {
             let newRow = [];
 
-            for (let j = 0; j < width; j++) {
+            for (let j = 0; j < height; j++) {
                 newRow.push(new Cell(i, j, size));
             }
 
