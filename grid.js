@@ -21,6 +21,12 @@ class Grid {
         return cells;
     }
 
+    checkOutOfBounds(targetCell) {
+        if(targetCell.x <= 0 || targetCell.x >= this.width || targetCell.y <= 0 || targetCell.y >= this.height)
+            return true;
+        return false;
+    }
+
     render() {
         this.cells.forEach(row => {
             row.forEach(cell => {

@@ -35,24 +35,30 @@ class Snake {
     }
 
     move() {
+        let head = this.getHead();
+
         switch (this.direction) {
             case "left":
-                this.cells[0].x -= 1;
+                head.x -= 1;
                 break;
             case "right":
-                this.cells[0].x += 1;
+                head.x += 1;
                 break;
             case "up":
-                this.cells[0].y -= 1;
+                head.y -= 1;
                 break;
             case "down":
-                this.cells[0].y += 1;
+                head.y += 1;
                 break;
         }
 
         for (let i = 1; i < this.cells.length; i++) {
 
         }
+    }
+
+    getHead() {
+        return this.cells[0]
     }
 
     render() {

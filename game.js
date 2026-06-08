@@ -4,17 +4,22 @@ class Game {
         this.snake = new Snake(size);
 
         this.paused = false;
+        this.isGameOver = false;
     }
 
     pause() {
         this.paused = !this.paused;
     }
 
+    gameOver() {
+        this.isGameOver = true;
+    }
+
     growSnake() {
         this.snake.grow();
     }
 
-    changenSnakeDirection(newDirection) {
+    changeSnakeDirection(newDirection) {
         if(this.paused)
             return;
 
@@ -26,6 +31,9 @@ class Game {
             return;
         
         this.snake.move();
+        if(this.grid.checkOutOfBounds(this.snake.getHead())) {
+            this.gameOver();
+        }
     }
 
     render() {
