@@ -2,6 +2,12 @@ class Game {
     constructor(width, height, size) {
         this.grid = new Grid(width, height, size);
         this.snake = new Snake(size);
+
+        this.paused = false;
+    }
+
+    pause() {
+        this.paused = !this.paused;
     }
 
     growSnake() {
@@ -9,10 +15,16 @@ class Game {
     }
 
     changenSnakeDirection(newDirection) {
+        if(this.paused)
+            return;
+
         this.snake.changeDirection(newDirection);
     }
 
     moveSnake() {
+        if(this.paused)
+            return;
+        
         this.snake.move();
     }
 

@@ -33,5 +33,9 @@ function keyPressed() {
     case 83:
       game.changenSnakeDirection("down");
       break;
+    case 27:
+    case 80:
+      game.pause();
+      break;
   }
 }
