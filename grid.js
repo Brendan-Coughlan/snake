@@ -21,6 +21,12 @@ class Grid {
         return cells;
     }
 
+    checkOverlap(cellA, cellB) {
+        if(cellA.x == cellB.x && cellA.y == cellB.y)
+            return true;
+        return false;
+    }
+
     checkOutOfBounds(targetCell) {
         if(targetCell.x <= 0 || targetCell.x >= this.width || targetCell.y <= 0 || targetCell.y >= this.height)
             return true;

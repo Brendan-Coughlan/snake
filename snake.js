@@ -1,12 +1,30 @@
 class Snake {
-    constructor(size) {
+    constructor(x, y, size) {
         this.size = size;
         this.direction = "down";
-        this.cells = [];
+        this.cells = [new Cell(x, y, this.size, { fillColor: [0, 255, 0]})];
     }
 
     grow() {
-        this.cells.unshift(new Cell(1, 1, this.size, { fillColor: [0, 255, 0] }))
+        let head = this.getHead();
+
+        let newHead;
+        switch (this.direction) {
+            case "left":
+                newHead = new Cell(head.x - 1, head.y, this.size, { fillColor: [0, 255, 0] })
+                break;
+            case "right":
+                newHead = new Cell(head.x + 1, head.y, this.size, { fillColor: [0, 255, 0] })
+                break;
+            case "up":
+                newHead = new Cell(head.x, head.y - 1, this.size, { fillColor: [0, 255, 0] })
+                break;
+            case "down":
+                newHead = new Cell(head.x, head.y + 1, this.size, { fillColor: [0, 255, 0] })
+                break;
+        }
+
+        this.cells.unshift(newHead);
     }
 
     changeDirection(newDirection) {
@@ -36,6 +54,10 @@ class Snake {
 
     move() {
         let head = this.getHead();
+        let lastPosX = head.x;
+        let lastPosY = head.y;
+        let currentPosX;
+        let currentPosY;
 
         switch (this.direction) {
             case "left":
@@ -53,7 +75,14 @@ class Snake {
         }
 
         for (let i = 1; i < this.cells.length; i++) {
+            currentPosX = this.cells[i].x;
+            currentPosY = this.cells[i].y;
+            
+            this.cells[i].x = lastPosX;
+            this.cells[i].y = lastPosY;
 
+            lastPosX = currentPosX
+            lastPosY = currentPosY
         }
     }
 

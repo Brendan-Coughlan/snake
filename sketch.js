@@ -6,13 +6,13 @@ let lastDelay = 0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  game = new Game(30, 10, 25);
-  game.growSnake();
+  game = new Game(30, 30, 25);
 }
 
 function draw() {
   if (millis() - lastDelay >= DELAY) {
     game.moveSnake();
+    game.checkConsumeFood();
 
     lastDelay = millis();
   }
@@ -22,16 +22,16 @@ function draw() {
 function keyPressed() {
   switch (keyCode) {
     case 65:
-      game.changenSnakeDirection("left");
+      game.changeSnakeDirection("left");
       break;
     case 68:
-      game.changenSnakeDirection("right");
+      game.changeSnakeDirection("right");
       break;
     case 87:
-      game.changenSnakeDirection("up");
+      game.changeSnakeDirection("up");
       break;
     case 83:
-      game.changenSnakeDirection("down");
+      game.changeSnakeDirection("down");
       break;
     case 27:
     case 80:
