@@ -21,6 +21,10 @@ class Grid {
         return cells;
     }
 
+    getRandomCell() {
+        return this.cells[Math.floor(Math.random() * this.width)][Math.floor(Math.random() * this.height)]
+    }
+
     checkOverlap(cellA, cellB) {
         if(cellA.x == cellB.x && cellA.y == cellB.y)
             return true;
